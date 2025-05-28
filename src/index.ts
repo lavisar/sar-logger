@@ -18,11 +18,13 @@ const nodeLog = (color: string, label: string, ...message: any[]) => {
 
 // Web-style (browser) logger
 const browserLog = (color: string, label: string, ...message: any[]) => {
-	const tag = `%c[${label.toUpperCase()}]`;
+	const tag = `[${label.toUpperCase()}]`;
 	const time = showTimestamp ? `[${getTimestamp()}] ` : '';
 	const style = `color: ${color}; font-weight: bold`;
-	const msg = `${time}${prefix}${message.join(' ')}`;
-	console.log(tag, style, msg);
+	const fullMessage = `${time}${prefix}${message.join(' ')}`;
+
+	// Apply the same style to both tag and message
+	console.log(`%c${tag} %c${fullMessage}`, style, style);
 };
 
 // Selects appropriate log method
@@ -44,22 +46,27 @@ export const logger = {
 
 	custom: (message: string, options?: { color?: string }) => {
 		const color = options?.color ?? 'gray';
-		const tag = isWebLogging ? `%c[LOG]` : '[LOG]';
+		const tagText = '[LOG]';
 		const time = showTimestamp ? `[${getTimestamp()}] ` : '';
 		const msg = `${time}${prefix}${message}`;
 
 		if (isWebLogging) {
-			console.log(tag, `color: ${color}; font-weight: bold`, msg);
+			const style = `color: ${color}; font-weight: bold`;
+			// Apply style to both tag and message
+			console.log(`%c${tagText} %c${msg}`, style, style);
 		} else {
-			console.log(`\x1b[38;2;${hexToRGB(color)}m${tag} ${msg}\x1b[0m`);
+			const rgb = hexToRGB(color);
+			const ansiColor = rgb ? `\x1b[38;2;${rgb}m` : '';
+			console.log(`${ansiColor}${tagText} ${msg}\x1b[0m`);
 		}
-	},
+	}
 };
 
 // Helpers
-const hexToRGB = (hex: string) => {
-	const c = hex.replace(/^#/, '');
-	if (!/^[0-9A-Fa-f]{6}$/.test(c)) return '255;255;255';
+const hexToRGB = (hex: string): string | null => {
+	const c = hex.startsWith('#') ? hex.slice(1) : hex;
+	if (!/^[0-9A-Fa-f]{6}$/.test(c)) return null;
+
 	const r = parseInt(c.slice(0, 2), 16);
 	const g = parseInt(c.slice(2, 4), 16);
 	const b = parseInt(c.slice(4, 6), 16);

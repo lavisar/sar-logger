@@ -33,7 +33,7 @@ yarn add sar-logger
 ## 🚀 Usage
 
 ```ts
-import { logger, setLoggerPrefix, enableFileLogging } from 'sar-logger';
+import { logger, setLoggerPrefix, enableFileLogging,webLogging } from 'sar-logger';
 
 // Set a custom label prefix
 setLoggerPrefix('SERVER');
