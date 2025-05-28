@@ -21,10 +21,9 @@ const browserLog = (color: string, label: string, ...message: any[]) => {
 	const tag = `[${label.toUpperCase()}]`;
 	const time = showTimestamp ? `[${getTimestamp()}] ` : '';
 	const style = `color: ${color}; font-weight: bold`;
-	const fullMessage = `${time}${prefix}${message.join(' ')}`;
+	const fullMessage = `${time}${prefix}${tag}: ${message.join(' ')}`;
 
-	// Apply the same style to both tag and message
-	console.log(`%c${tag} %c${fullMessage}`, style, style);
+	console.log(`%c${fullMessage}`, style);
 };
 
 // Selects appropriate log method
@@ -53,13 +52,13 @@ export const logger = {
 		if (isWebLogging) {
 			const style = `color: ${color}; font-weight: bold`;
 			// Apply style to both tag and message
-			console.log(`%c${tagText} %c${msg}`, style, style);
+			console.log(`%c${tagText} ${msg}`, style);
 		} else {
 			const rgb = hexToRGB(color);
 			const ansiColor = rgb ? `\x1b[38;2;${rgb}m` : '';
 			console.log(`${ansiColor}${tagText} ${msg}\x1b[0m`);
 		}
-	}
+	},
 };
 
 // Helpers

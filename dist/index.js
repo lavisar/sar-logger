@@ -15,11 +15,12 @@ const nodeLog = (color, label, ...message) => {
 };
 // Web-style (browser) logger
 const browserLog = (color, label, ...message) => {
-    const tag = `%c[${label.toUpperCase()}]`;
+    const tag = `[${label.toUpperCase()}]`;
     const time = showTimestamp ? `[${getTimestamp()}] ` : '';
     const style = `color: ${color}; font-weight: bold`;
-    const msg = `${time}${prefix}${message.join(' ')}`;
-    console.log(tag, style, msg);
+    const fullMessage = `${time}${prefix}${tag}: ${message.join(' ')}`;
+    // Use a single %c for the whole message
+    console.log(`%c${fullMessage}`, style);
 };
 // Selects appropriate log method
 const log = (color, label, ...message) => {
@@ -38,23 +39,28 @@ export const logger = {
     debug: (...args) => log('purple', 'debug', ...args),
     fatal: (...args) => log('black', 'fatal', ...args),
     custom: (message, options) => {
-        const color = options?.color ?? 'gray';
-        const tag = isWebLogging ? `%c[LOG]` : '[LOG]';
+        var _a;
+        const color = (_a = options === null || options === void 0 ? void 0 : options.color) !== null && _a !== void 0 ? _a : 'gray';
+        const tagText = '[LOG]';
         const time = showTimestamp ? `[${getTimestamp()}] ` : '';
         const msg = `${time}${prefix}${message}`;
         if (isWebLogging) {
-            console.log(tag, `color: ${color}; font-weight: bold`, msg);
+            const style = `color: ${color}; font-weight: bold`;
+            // Apply style to both tag and message
+            console.log(`%c${tagText} ${msg}`, style);
         }
         else {
-            console.log(`\x1b[38;2;${hexToRGB(color)}m${tag} ${msg}\x1b[0m`);
+            const rgb = hexToRGB(color);
+            const ansiColor = rgb ? `\x1b[38;2;${rgb}m` : '';
+            console.log(`${ansiColor}${tagText} ${msg}\x1b[0m`);
         }
     },
 };
 // Helpers
 const hexToRGB = (hex) => {
-    const c = hex.replace(/^#/, '');
+    const c = hex.startsWith('#') ? hex.slice(1) : hex;
     if (!/^[0-9A-Fa-f]{6}$/.test(c))
-        return '255;255;255';
+        return null;
     const r = parseInt(c.slice(0, 2), 16);
     const g = parseInt(c.slice(2, 4), 16);
     const b = parseInt(c.slice(4, 6), 16);
@@ -70,4 +76,3 @@ export const enableTimestamp = (enabled) => {
 export const webLogging = (enabled) => {
     isWebLogging = enabled;
 };
-//# sourceMappingURL=index.js.map
