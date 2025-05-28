@@ -19,10 +19,10 @@
   "keywords": ["logger", "typescript", "console", "color", "esm"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sarco-dev/logger.git"
+    "url": "https://github.com/lavisar/sar-logger"
   },
   "bugs": {
-    "url": "https://github.com/sarco-dev/logger/issues"
+    "url": "https://github.com/lavisar/sar-logger/issues"
   },
-  "homepage": "https://github.com/sarco-dev/logger#readme"
+  "homepage": "https://github.com/lavisar/sar-logger#readme"
 }
