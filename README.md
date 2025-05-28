@@ -56,6 +56,8 @@ logger.custom('Custom color', { color: '#FF5733' });
 
 ```
 ## 🖨 Sample Output
+- Web Output:
+![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/-YMZuA4wIH/original)
 - Colorful Output:
 ![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/Qt5B9gpNwC/original)
 - Custom Color Output:
