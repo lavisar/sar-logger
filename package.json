@@ -1,0 +1,25 @@
+{
+	"name": "@sar/logger",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"scripts": {
+		"build": "tsc"
+	},
+	"keywords": [
+		"logger",
+		"typescript",
+		"console",
+		"color",
+		"esm"
+	],
+	"author": "lavisar",
+	"license": "MIT"
+}
