@@ -41,6 +41,9 @@ setLoggerPrefix('SERVER');
 // Show timestamp
 enableTimestamp(true)
 
+// Log in web console
+webLogging(true) // <- colorful log in web console
+
 // Log examples
 logger.success('Server started successfully!');
 logger.info('Listening on port 3000');
