@@ -1,25 +1,28 @@
 {
-	"name": "@sar/logger",
-	"version": "1.0.0",
-	"type": "module",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"types": "./dist/index.d.ts"
-		}
-	},
-	"scripts": {
-		"build": "tsc"
-	},
-	"keywords": [
-		"logger",
-		"typescript",
-		"console",
-		"color",
-		"esm"
-	],
-	"author": "lavisar",
-	"license": "MIT"
+  "name": "sar-logger",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "author": "Your Name",
+  "keywords": ["logger", "typescript", "console", "color", "esm"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sarco-dev/logger.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sarco-dev/logger/issues"
+  },
+  "homepage": "https://github.com/sarco-dev/logger#readme"
 }

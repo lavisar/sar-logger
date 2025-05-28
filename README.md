@@ -1,9 +1,9 @@
-# @sar/logger
+# sar-logger
 
-![npm](https://img.shields.io/npm/v/@sar/logger)
-![npm downloads](https://img.shields.io/npm/dt/@sar/logger)
-![install size](https://badgen.net/packagephobia/install/@sar/logger)
-![types](https://badgen.net/npm/types/@sar/logger)
+![npm](https://img.shields.io/npm/v/sar-logger)
+![npm downloads](https://img.shields.io/npm/dt/sar-logger)
+![install size](https://badgen.net/packagephobia/install/sar-logger)
+![types](https://badgen.net/npm/types/sar-logger)
 
 A lightweight TypeScript logger that adds colorful, timestamped, and prefixed messages to your Node.js console. Perfect for debugging and clean CLI output!
 
@@ -24,16 +24,16 @@ A lightweight TypeScript logger that adds colorful, timestamped, and prefixed me
 Install via npm or yarn:
 
 ```bash
-npm install @sar/logger
+npm install sar-logger
 ```
 or
 ```bash
-yarn add @sar/logger
+yarn add sar-logger
 ```
 ## 🚀 Usage
 
 ```ts
-import { logger, setLoggerPrefix, enableFileLogging } from '@sar/logger';
+import { logger, setLoggerPrefix, enableFileLogging } from 'sar-logger';
 
 // Set a custom label prefix
 setLoggerPrefix('SERVER');
