@@ -1,6 +1,6 @@
 {
   "name": "sar-logger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -10,13 +10,21 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc"
   },
   "license": "MIT",
   "author": "Your Name",
-  "keywords": ["logger", "typescript", "console", "color", "esm"],
+  "keywords": [
+    "logger",
+    "typescript",
+    "console",
+    "color",
+    "esm"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/lavisar/sar-logger"
