@@ -71,11 +71,3 @@ export const setLoggerPrefix = (name) => {
 export const enableTime = (enabled) => {
     showTime = enabled;
 };
-logger.success('Server started successfully!');
-logger.info('Listening on port 3000');
-logger.warning('Memory usage is high');
-logger.error('Failed to connect to database');
-logger.debug('Debugging request:', { id: 42 });
-logger.fatal('Unexpected shutdown occurred.');
-// Custom color
-logger.custom('Custom color', { color: '#FF5733' });
