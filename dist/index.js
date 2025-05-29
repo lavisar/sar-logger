@@ -1,28 +1,41 @@
-// Internal state
-let prefix = '';
-let showTimestamp = false;
-let isWebLogging = false;
-// Timestamp helper
-const getTimestamp = () => {
-    return new Date().toISOString();
+//* ANSI color codes
+const ANSI_COLORS = {
+    reset: '\x1b[0m', // #FFFFFF
+    red: '\x1b[31m', // #FF0000
+    green: '\x1b[32m', // #008000
+    lime: '\x1b[32;1m', // #00FF00
+    yellow: '\x1b[33m', // #FFFF00
+    blue: '\x1b[34m', // #0000FF
+    purple: '\x1b[35m', // #800080
+    white: '\x1b[37m', // #FFFFFF
 };
-// Node-style (terminal) logger
+let prefix = '';
+let showTime = false;
+let isWebLogging = false;
+//* Timestamp helper
+const getTimestamp = () => {
+    const date = new Date();
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+};
+//* Node-style (terminal) logger
 const nodeLog = (color, label, ...message) => {
     const tag = `[${label.toUpperCase()}]`;
-    const time = showTimestamp ? `[${getTimestamp()}] ` : '';
-    const msg = `${time}${prefix}${tag}: ${message.join(' ')}`;
-    console.log(`${color}${msg}\x1b[0m`);
+    const time = showTime ? `[${getTimestamp()}] ` : '';
+    const msg = `${time}${prefix ? prefix : tag}: ${message.join(' ')}`;
+    console.log(`${color}${msg}${ANSI_COLORS.reset}`);
 };
-// Web-style (browser) logger
+//* Web-style (browser) logger
 const browserLog = (color, label, ...message) => {
     const tag = `[${label.toUpperCase()}]`;
-    const time = showTimestamp ? `[${getTimestamp()}] ` : '';
-    const style = `color: ${color}; font-weight: bold`;
+    const time = showTime ? `[${getTimestamp()}] ` : '';
+    const style = `color: ${color};`;
     const fullMessage = `${time}${prefix}${tag}: ${message.join(' ')}`;
-    // Use a single %c for the whole message
     console.log(`%c${fullMessage}`, style);
 };
-// Selects appropriate log method
+//* Selects appropriate log method
 const log = (color, label, ...message) => {
     if (isWebLogging) {
         browserLog(color, label, ...message);
@@ -32,31 +45,34 @@ const log = (color, label, ...message) => {
     }
 };
 export const logger = {
-    success: (...args) => log('green', 'success', ...args),
-    error: (...args) => log('red', 'error', ...args),
-    warning: (...args) => log('orange', 'warning', ...args),
-    info: (...args) => log('blue', 'info', ...args),
-    debug: (...args) => log('purple', 'debug', ...args),
-    fatal: (...args) => log('black', 'fatal', ...args),
+    success: (...args) => log(ANSI_COLORS.green, 'success', ...args),
+    error: (...args) => log(ANSI_COLORS.red, 'error', ...args),
+    warning: (...args) => log(ANSI_COLORS.yellow, 'warning', ...args),
+    info: (...args) => log(ANSI_COLORS.blue, 'info', ...args),
+    debug: (...args) => log(ANSI_COLORS.purple, 'debug', ...args),
+    fatal: (...args) => log(ANSI_COLORS.white, 'fatal', ...args),
+    /**
+     * @param options.color - Custom color in hex format (e.g., '#FF5733').
+     */
     custom: (message, options) => {
         var _a;
         const color = (_a = options === null || options === void 0 ? void 0 : options.color) !== null && _a !== void 0 ? _a : 'gray';
-        const tagText = '[LOG]';
-        const time = showTimestamp ? `[${getTimestamp()}] ` : '';
-        const msg = `${time}${prefix}${message}`;
+        const defaultPrefix = '[LOG]';
+        const time = showTime ? `[${getTimestamp()}] ` : '';
+        const msg = `${time}${prefix ? prefix : defaultPrefix}: ${message}`;
         if (isWebLogging) {
-            const style = `color: ${color}; font-weight: bold`;
+            const style = `color: ${color};`;
             // Apply style to both tag and message
-            console.log(`%c${tagText} ${msg}`, style);
+            console.log(`%c${prefix ? prefix : defaultPrefix}: ${msg}`, style);
         }
         else {
             const rgb = hexToRGB(color);
             const ansiColor = rgb ? `\x1b[38;2;${rgb}m` : '';
-            console.log(`${ansiColor}${tagText} ${msg}\x1b[0m`);
+            console.log(`${ansiColor}${msg}\x1b[0m`);
         }
     },
 };
-// Helpers
+//* Helpers
 const hexToRGB = (hex) => {
     const c = hex.startsWith('#') ? hex.slice(1) : hex;
     if (!/^[0-9A-Fa-f]{6}$/.test(c))
@@ -66,12 +82,12 @@ const hexToRGB = (hex) => {
     const b = parseInt(c.slice(4, 6), 16);
     return `${r};${g};${b}`;
 };
-// Configuration
+//* Configuration
 export const setLoggerPrefix = (name) => {
-    prefix = name ? `[${name}] ` : '';
+    prefix = name ? `[${name}]` : '';
 };
-export const enableTimestamp = (enabled) => {
-    showTimestamp = enabled;
+export const enableTime = (enabled) => {
+    showTime = enabled;
 };
 export const webLogging = (enabled) => {
     isWebLogging = enabled;

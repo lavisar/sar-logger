@@ -5,14 +5,14 @@
 ![install size](https://badgen.net/packagephobia/install/sar-logger)
 ![types](https://badgen.net/npm/types/sar-logger)
 
-A lightweight TypeScript logger that adds colorful, timestamped, and prefixed messages to your Node.js console. Perfect for debugging and clean CLI output!
+A lightweight TypeScript logger that adds colorful, time, and prefixed messages to your Node.js and web console.
 
 ---
 
 ## ✨ Features
 
 - 🎨 Color-coded log levels
-- ⏱ Auto-timestamped output
+- ⏱ Auto-time output
 - 🏷 Optional log prefix (e.g. `[API]`)
 - 📁 Optional file logging (coming soon)
 - 🪶 Lightweight — no external dependencies
@@ -33,13 +33,13 @@ yarn add sar-logger
 ## 🚀 Usage
 
 ```ts
-import { logger, setLoggerPrefix, enableFileLogging,webLogging } from 'sar-logger';
+import { logger, setLoggerPrefix, webLogging } from 'sar-logger';
 
 // Set a custom label prefix
 setLoggerPrefix('SERVER');
 
 // Show timestamp
-enableTimestamp(true)
+enableTime(true)
 
 // Log in web console
 webLogging(true) // <- colorful log in web console
@@ -57,25 +57,31 @@ logger.custom('Custom color', { color: '#FF5733' });
 ```
 ## 🖨 Sample Output
 - Web Output:
-![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/-YMZuA4wIH/original)
-- Colorful Output:
-![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/Qt5B9gpNwC/original)
-- Custom Color Output:
-![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/25Ag39GeKd/original)
-- Timestamp Output:
-![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/PBuCoKfZeF/original)
+![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/Flb7lZ8XWE/original)
+- Terminal Output:
+![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/uUp5brViwS/original)
+- Show time Output:
+![alt text](https://xgjzloifyvgpbmyonaya.supabase.co/storage/v1/object/public/files/Ml59dQewR1/original)
 
 
 - File Output (log.txt): (coming soon)
 
 ## ⚙️ API
+Set a global prefix (like [API] or [DB]).
 ```ts
 setLoggerPrefix(name: string)
 ```
-Set a global prefix (like [API] or [DB]).
+Show time in log [HH:MM:SS]
+```ts
+enableTime(enabled: boolean)
+```
+Enable web logger
+```ts
+webLogging(enabled: boolean)
+```
 
 
 ## 📜 License
-MIT © 2025 lavisar
+MIT © 2025 lavisar <br/>
 Feel free to contribute!
 
