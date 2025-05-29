@@ -1,36 +1,39 @@
 {
-  "name": "sar-logger",
-  "version": "1.1.4",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc"
-  },
-  "license": "MIT",
-  "author": "Your Name",
-  "keywords": [
-    "logger",
-    "typescript",
-    "console",
-    "color",
-    "esm"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lavisar/sar-logger"
-  },
-  "bugs": {
-    "url": "https://github.com/lavisar/sar-logger/issues"
-  },
-  "homepage": "https://github.com/lavisar/sar-logger#readme"
+	"name": "sar-logger",
+	"version": "1.1.5",
+	"description": "A lightweight TypeScript logger that adds colorful, time, and prefixed messages to your Node.js and web console.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc",
+		"test": "tsc && node dist/index.js"
+	},
+	"license": "MIT",
+	"author": "lavisar (lavisar.dev@gmail.com)",
+	"keywords": [
+		"logger",
+		"console",
+		"color",
+		"log",
+		"debug",
+		"sar-logger"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lavisar/sar-logger"
+	},
+	"bugs": {
+		"url": "https://github.com/lavisar/sar-logger/issues"
+	},
+	"homepage": "https://github.com/lavisar/sar-logger#readme"
 }
