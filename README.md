@@ -33,16 +33,13 @@ yarn add sar-logger
 ## 🚀 Usage
 
 ```ts
-import { logger, setLoggerPrefix, webLogging } from 'sar-logger';
+import { logger, setLoggerPrefix } from 'sar-logger';
 
 // Set a custom label prefix
 setLoggerPrefix('SERVER');
 
 // Show timestamp
 enableTime(true)
-
-// Log in web console
-webLogging(true) // <- colorful log in web console
 
 // Log examples
 logger.success('Server started successfully!');
@@ -75,11 +72,6 @@ Show time in log [HH:MM:SS]
 ```ts
 enableTime(enabled: boolean)
 ```
-Enable web logger
-```ts
-webLogging(enabled: boolean)
-```
-
 
 ## 📜 License
 MIT © 2025 lavisar <br/>
