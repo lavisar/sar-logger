@@ -3,7 +3,7 @@
 ![npm](https://img.shields.io/npm/v/sar-logger)
 ![npm downloads](https://img.shields.io/npm/dt/sar-logger)
 ![install size](https://badgen.net/packagephobia/install/sar-logger)
-![types](https://badgen.net/npm/types/sar-logger)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/lavisar/sar-logger)
 
 A lightweight TypeScript logger that adds colorful, time, and prefixed messages to your Node.js and web console.
 
