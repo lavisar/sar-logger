@@ -24,11 +24,11 @@ A lightweight TypeScript logger that adds colorful, time, and prefixed messages 
 Install via npm or yarn:
 
 ```bash
-npm install sar-logger
+npm install -D sar-logger
 ```
 or
 ```bash
-yarn add sar-logger
+yarn add -D sar-logger
 ```
 ## 🚀 Usage
 

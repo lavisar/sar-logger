@@ -1,6 +1,6 @@
 {
 	"name": "sar-logger",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"description": "A lightweight TypeScript logger that adds colorful, time, and prefixed messages to your Node.js and web console.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -35,5 +35,5 @@
 	"bugs": {
 		"url": "https://github.com/lavisar/sar-logger/issues"
 	},
-	"homepage": "https://github.com/lavisar/sar-logger#readme"
+	"homepage": "https://deepwiki.com/lavisar/sar-logger"
 }
